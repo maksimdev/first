@@ -1,38 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { Provider } from "react-redux"
+import { createStore } from "redux"
+import { Router, Route, hashHistory, IndexRoute } from "react-router"
+import { syncHistoryWithStore } from "react-router-redux"
+
+import Template from "./components/template/Template"
+import Home from "./components/pages/Home"
+import About from "./components/pages/About"
+
+import reducer from "./reducers"
+
+const store = createStore(reducer)
+const history = syncHistoryWithStore(hashHistory, store)
+
 class App extends Component {
-  state = {
-    response: ''
-  };
-
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          {this.state.response}
-        </p>
-      </div>
+      <Provider store={store}>
+        <Router history={history}>
+            <Route exact path="/" component={Template}>
+                <Route path="/home" component={Home}/>
+                <Route path="/about" component={About}/>
+            </Route>
+        </Router>
+    </Provider>
     );
   }
 }
