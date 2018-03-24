@@ -4,24 +4,6 @@ import logo from '../../pizza.png';
 //logo.svg';
 
 class Header extends Component {
-  /*state = {
-    response: ''
-  };
-
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };   {this.state.response}*/
 
   render() {
     return (
@@ -43,8 +25,9 @@ class Nav extends Component {
         return (
             <nav id="nav">
                 <ul>
-                    <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
+                    <li><Link to="/ask">Ask</Link></li>
                 </ul>
             </nav>
         )

@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { Provider } from "react-redux"
-import { createStore } from "redux"
+import store from "./Store"
 import { Router, Route, hashHistory, IndexRoute } from "react-router"
 import { syncHistoryWithStore } from "react-router-redux"
 
 import Template from "./components/template/Template"
 import Home from "./components/pages/Home"
 import About from "./components/pages/About"
+import Ask from "./components/pages/Ask"
 
-import reducer from "./reducers"
-
-const store = createStore(reducer)
 const history = syncHistoryWithStore(hashHistory, store)
 
 class App extends Component {
@@ -21,9 +19,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router history={history}>
-            <Route exact path="/" component={Template}>
-                <Route path="/home" component={Home}/>
+            <Route path="/" component={Template}>
+                <IndexRoute component={Home}/>
                 <Route path="/about" component={About}/>
+                <Route path="/ask" component={Ask}/>
             </Route>
         </Router>
     </Provider>
