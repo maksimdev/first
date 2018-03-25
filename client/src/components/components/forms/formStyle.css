@@ -1,0 +1,6 @@
+.labelForm {
+  background-color:rgba(0, 100, 0, 0.6);
+}
+.labelFormError {
+  background-color:rgba(139, 0, 0, 0.6);
+}

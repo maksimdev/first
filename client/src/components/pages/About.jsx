@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
+import Form from '../components/forms/Form.js';
 
 class About extends Component {
   render() {
     return (
       <div>
         <h3>About</h3>
-        <form action="/login" method="post">
-            <div>
-                <label>Username:</label>
-                <input type="text" name="username"/>
-            </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" name="password"/>
-            </div>
-            <div>
-                <input type="submit" value="Log In"/>
-            </div>
-        </form>
+        <Form action="login" method="post" />
       </div>
     )
   }
