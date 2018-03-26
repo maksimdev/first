@@ -1,15 +1,15 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const db = require('../utils/DataBaseUtils');
 
+//ROOT STATIC PAGE
 router.get('/', function (req, res, next) {
   return res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
-router.get('/api/hello', (req, res) => {
-  res.send({ express: 'THIS MESSAGE FROM EXPRESS!' });
-});
 
-//GET ALL SERVICES (need req to db)!
+//SERVICES MANAGER
 router.get('/api/services', (req, res) => {
   res.send([
       {id:1, name:'Service one', description:'One - popular service.', price:'10.00'},
@@ -18,5 +18,27 @@ router.get('/api/services', (req, res) => {
     ]
   );
 });
+
+
+//USER MANAGER
+router.post('/createlogin', (req, res) => {
+  db.createUser(req.body)
+    .then(function(result){
+      //CREATE SESSION
+      req.session.username = result.username;
+  		res.send("USER CREATED")
+  	})
+  	.catch(function(err){
+        console.log(req.session)
+  			res.send("This login already exist")
+  	})
+});
+
+router.get('/killme', (req, res) => {
+  req.session = null
+  req.session.destroy()
+  res.send('YOU ARE DESTROYED')
+});
+
 
 module.exports = router;

@@ -6,7 +6,11 @@ class About extends Component {
     return (
       <div>
         <h3>About</h3>
+        <h4>Log in</h4>
         <Form action="login" method="post" />
+        <h4>Create login</h4>
+        <Form action="createlogin" method="post" />
+        <a href="/killme">KILLME</a>
       </div>
     )
   }
