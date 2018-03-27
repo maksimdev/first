@@ -9,9 +9,6 @@ function setUpConnection() {
 }
 
 
-
-
-
 //USER MANAGER
 function createUser(userData) {
   let user = {

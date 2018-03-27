@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './formStyle.css';
 
-//<Form action="login" method="post">
+//<Form action="login" method="post" />
 class Form extends Component {
   constructor (props) {
     super(props);

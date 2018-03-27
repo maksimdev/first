@@ -21,23 +21,25 @@ router.get('/api/services', (req, res) => {
 
 
 //USER MANAGER
-router.post('/createlogin', (req, res) => {
+router.post('/register', (req, res) => {
   db.createUser(req.body)
     .then(function(result){
-      //CREATE SESSION
+      console.log(result)
       req.session.username = result.username;
-  		res.send("USER CREATED")
+  		res.status(200).send("Created")
   	})
   	.catch(function(err){
         console.log(req.session)
-  			res.send("This login already exist")
+  			res.status(500).send('THIS LOGIN ALREDY EXIST!');
   	})
 });
 
-router.get('/killme', (req, res) => {
-  req.session = null
+router.post('/login', (req, res) => {
+});
+
+router.get('/logout', (req, res) => {
   req.session.destroy()
-  res.send('YOU ARE DESTROYED')
+  res.status(200).send("Destroyed")
 });
 
 
