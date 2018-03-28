@@ -10,7 +10,14 @@ router.get('/', function (req, res, next) {
 
 
 //SERVICES MANAGER
-router.get('/api/services', (req, res) => {
+router.get('/api/services', function (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next()
+        }
+        res.send([
+            {id:1, name:'NOT AUTH', description:'NOT AUTH', price:'NOT AUTH'},
+          ])
+    }, (req, res) => {
   res.send([
       {id:1, name:'Service one', description:'One - popular service.', price:'10.00'},
       {id:2, name:'Service two', description:'Two - popular service.', price:'20.00'},
@@ -24,18 +31,18 @@ router.get('/api/services', (req, res) => {
 router.post('/register', (req, res) => {
   db.createUser(req.body)
     .then(function(result){
-      console.log(result)
-      req.session.username = result.username;
+      req.session.username = result.username
   		res.status(200).send("Created")
   	})
   	.catch(function(err){
-        console.log(req.session)
   			res.status(500).send('THIS LOGIN ALREDY EXIST!');
   	})
 });
 
-router.post('/login', (req, res) => {
-});
+router.post('/login', passport.authenticate('local', { successRedirect: '/',
+                                     failureRedirect: '/login',
+                                     failureFlash: true })
+);
 
 router.get('/logout', (req, res) => {
   req.session.destroy()
