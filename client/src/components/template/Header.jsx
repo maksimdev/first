@@ -28,6 +28,7 @@ class Nav extends Component {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/authorization">Authorization</Link></li>
                     <li><Link to="/ask">Ask</Link></li>
+                    <li><Link to="/schedule">Schedule</Link></li>
                 </ul>
             </nav>
         )

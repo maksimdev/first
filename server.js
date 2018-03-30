@@ -3,16 +3,11 @@ const port = process.env.PORT || 8080;
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
 const db = require('./utils/DataBaseUtils');
-
-//session
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-
 const app = express();
 const routes = require('./routes/router');
 
@@ -25,15 +20,24 @@ app.use(session({
 }));
 app.use(passport.initialize())
 app.use(passport.session())
+
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  console.log('serializeUser');
+  console.log(user);
+  done(null, user.id);
 });
 
-passport.deserializeUser(function(user, done) {
-  done(null, user);
+passport.deserializeUser(function(id, done) {
+  console.log('deserializeUser');
+  console.log(id);
+  db.UserModel.User.findById(id, function(err, user) {
+    done(err, user);
+  });
 });
+
 passport.use(new LocalStrategy(
     function(username, password, done) {
+        console.log(username);
         db.getUser(username).exec((err, user) => {
             if (err) {
                 return done(err)
