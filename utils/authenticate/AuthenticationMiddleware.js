@@ -3,7 +3,7 @@ function authenticationMiddleware () {
         if (req.isAuthenticated()) {
             return next()
         }
-        res.status('401').send('')
+        res.status('401').send('ACCESS DENIED')
     }
 }
 

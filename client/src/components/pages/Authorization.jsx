@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Form from '../components/forms/Form.js';
-import Button from '../components/buttons/Button.js';
+import LogoutButton from '../components/buttons/LogoutButton.js';
 
 class Authorization extends Component {
   render() {
@@ -8,10 +8,10 @@ class Authorization extends Component {
       <div>
         <h3>Authorization PAGE</h3>
         <h4>Log in</h4>
-        <Form action="login" method="post" />
+        <Form action="login" method="post" buttonText="Log in" />
         <h4>Create login</h4>
-        <Form action="register" method="post" />
-        <Button />
+        <Form action="register" method="post" buttonText="Create me!" />
+        <LogoutButton />
       </div>
     )
   }

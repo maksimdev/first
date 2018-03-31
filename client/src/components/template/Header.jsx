@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router"
-import logo from '../../pizza.png';
-//logo.svg';
+import logo from '../../cookie.png';
 
 class Header extends Component {
 
@@ -10,7 +9,7 @@ class Header extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">My Header!!!</h1>
+          <h1 className="App-title">COOKIE MONSTER'S COMPANY</h1>
           <Nav />
         </header>
         <p className="App-intro">

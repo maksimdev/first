@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './formStyle.css';
 
-//<Form action="login" method="post" />
+//<Form action="login" method="post" buttonText="Log in" />
 class Form extends Component {
   constructor (props) {
     super(props);
@@ -82,7 +82,7 @@ class Form extends Component {
               <input
                type="submit"
                disabled={!this.state.formValid}
-               value="Log In"
+               value={`${this.props.buttonText}`}
               />
           </div>
       </form>

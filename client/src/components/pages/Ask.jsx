@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ServiceListContainer from '../servicelist/ServiceListContainer';
+import ServiceListContainer from '../components/servicelist/ServiceListContainer';
 
 class Ask extends Component {
   render() {

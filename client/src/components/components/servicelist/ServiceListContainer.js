@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import store from '../../Store';
+import store from '../../../Store';
 import ServiceList from './ServiceList';
 //import axios from 'axios';
 
@@ -14,14 +14,22 @@ class ServiceListContainer extends Component {
     //   });
     // });
     store.dispatch({
-        type: 'GET_ALL',
+        type: 'GET_SERVICE_DATA',
         payload: ''
+    });
+  }
+
+  delete(id) {
+    console.log(`Delete: ${id}`);
+    store.dispatch({
+        type: 'DELETE_SERVICE',
+        payload: id
     });
   }
 
   render() {
     return (
-      <ServiceList services={this.props.services} />
+      <ServiceList services={this.props.services} delete={this.delete}/>
     )
   }
 }

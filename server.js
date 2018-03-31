@@ -37,7 +37,6 @@ passport.deserializeUser(function(id, done) {
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        console.log(username);
         db.getUser(username).exec((err, user) => {
             if (err) {
                 return done(err)

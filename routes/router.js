@@ -19,7 +19,9 @@ router.get('/api/services', authenticationMiddleware(), (req, res) => {
     ]
   );
 });
-router.get('/api/all', (req, res) => {
+
+//ALL SERVICES WITHOUT ACCESS
+router.get('/api/all', authenticationMiddleware(), (req, res) => {
   console.log(req.session)
   res.send([
     {id: 1,label: 'List item 1'},
@@ -28,6 +30,16 @@ router.get('/api/all', (req, res) => {
     {id: 4,label: 'List item 4'},
     ]
   );
+});
+//GET USERS SERVICES
+router.get('/api/createservice', authenticationMiddleware(), (req, res) => {
+  db.createService(req)
+    .then(function(result){
+      res.status(200).send("Created")
+    })
+    .catch(function(err){
+      res.status(500).send('VALIDATE ERROR!');
+    })
 });
 
 

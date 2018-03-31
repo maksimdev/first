@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ItemList from '../itemlist/ItemList';
+import ItemList from '../components/itemlist/ItemList';
 
 class Schedule extends Component {
   render() {
