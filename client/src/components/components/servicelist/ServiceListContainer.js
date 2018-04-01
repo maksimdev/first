@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../../../Store';
 import ServiceList from './ServiceList';
-//import axios from 'axios';
+import axios from 'axios';
 
-//MY SERVICES!!!
 class ServiceListContainer extends Component {
   componentDidMount() {
     // axios.get('/api/services').then(response => {
@@ -27,9 +26,17 @@ class ServiceListContainer extends Component {
     });
   }
 
+  enroll(date, service) {
+    axios.post('/api/createservice', {date: date, service: service}).then(response => {
+      console.log(response)
+    }).catch(() => {
+      console.log('Error!')
+    });
+  }
+
   render() {
     return (
-      <ServiceList services={this.props.services} delete={this.delete}/>
+      <ServiceList services={this.props.services} delete={this.delete} enroll={this.enroll}/>
     )
   }
 }

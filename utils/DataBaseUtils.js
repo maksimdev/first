@@ -12,16 +12,17 @@ function setUpConnection() {
 //SERVICE MANAGER
 function createService(req) {
   let record = {
-    date: new Date,
-    service: 'newService'+new Date,
-    user: req.session.passport.user
+    date: req.body.date,
+    service: req.body.service,
+    user: req.session.passport.user,
+    timestamp: new Date()
   }
   let newservice = new ServiceModel.Service(record)
   return newservice.save()
 }
 
 function getUsersSchedule(user) {
-  return ServiceModel.Service.find({user: user}, {date: 1, service: 1, _id: 0})
+  return ServiceModel.Service.find({user: user}, {date: 1, service: 1, timestamp: 1, _id: 0})
 }
 
 //USER MANAGER

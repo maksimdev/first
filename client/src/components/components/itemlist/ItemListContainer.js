@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ItemList from './ItemList';
 
-//Available services from server side
 class ItemListContainer extends Component {
   constructor(props) {
     super(props)
@@ -11,7 +10,7 @@ class ItemListContainer extends Component {
     }
   }
   componentDidMount() {
-    this.getData('/api/all');
+    this.getData('/api/myservices');
   }
 
   getData(url) {

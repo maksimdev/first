@@ -7,8 +7,9 @@ export default function(props) {
       {props.items.map(
         (item, id) =>
           <li key={id} className="service">
-          {item.date}
-          {item.service}
+            <span>Date: {item.date}</span><br />
+            <span>Title: {item.service}</span><br />
+            <span>Date of registration: {item.timestamp}</span>
           </li>
       )}
     </ul>
