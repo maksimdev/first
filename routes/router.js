@@ -37,6 +37,17 @@ router.post('/api/createservice', authenticationMiddleware(), (req, res) => {
       res.status(500).send('VALIDATE ERROR!');
     })
 });
+//DELETE SERVICE
+router.delete('/api/delete', authenticationMiddleware(), (req, res) => {
+  db.deleteService(req)
+    .then(function(result){
+      console.log(req.body.id)
+      res.status(200).send(req.body.id)
+    })
+    .catch(function(err){
+      res.status(500).send('ERROR!');
+    })
+});
 
 
 //USER MANAGER

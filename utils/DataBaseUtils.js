@@ -21,8 +21,12 @@ function createService(req) {
   return newservice.save()
 }
 
+function deleteService(req) {
+  return ServiceModel.Service.remove({_id: mongoose.Types.ObjectId(req.body.id)})
+}
+
 function getUsersSchedule(user) {
-  return ServiceModel.Service.find({user: user}, {date: 1, service: 1, timestamp: 1, _id: 0})
+  return ServiceModel.Service.find({user: user}, {date: 1, service: 1, timestamp: 1, _id: 1})
 }
 
 //USER MANAGER
@@ -45,3 +49,4 @@ module.exports.getUser = getUser;
 module.exports.UserModel = UserModel;
 module.exports.getUsersSchedule = getUsersSchedule;
 module.exports.createService = createService;
+module.exports.deleteService = deleteService;

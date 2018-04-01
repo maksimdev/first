@@ -10,6 +10,7 @@ export default function(props) {
             <span>Date: {item.date}</span><br />
             <span>Title: {item.service}</span><br />
             <span>Date of registration: {item.timestamp}</span>
+            <button onClick={() => props.undo(item._id, id)}>Undo recording</button>
           </li>
       )}
     </ul>

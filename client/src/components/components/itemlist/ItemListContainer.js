@@ -27,6 +27,15 @@ class ItemListContainer extends Component {
     .catch(() => this.setState({ hasErrored: true }));
   }
 
+  undo(id, row) {
+    axios.delete('/api/delete', {data: {"id": id}})
+    .then((result) => {
+      this.setState({items: [...this.state.items.slice(0, row),
+                             ...this.state.items.slice(row + 1)]})
+    })
+    .catch(() => console.log('Error'));
+  }
+
     render() {
         if (this.state.hasErrored) { //error with access or route!
             return <p>Access denied, please log in!</p>;
@@ -37,8 +46,9 @@ class ItemListContainer extends Component {
         if (this.state.items.length === 0) {
             return <p>No current records!</p>;
         }
-        return (
-          <ItemList items={this.state.items} />
+        return (<div>
+          <ItemList items={this.state.items} undo={this.undo.bind(this)} />
+          </div>
         );
     }
 }

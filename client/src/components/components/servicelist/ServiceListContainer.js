@@ -18,14 +18,6 @@ class ServiceListContainer extends Component {
     });
   }
 
-  delete(id) {
-    console.log(`Delete: ${id}`);
-    store.dispatch({
-        type: 'DELETE_SERVICE',
-        payload: id
-    });
-  }
-
   enroll(date, service) {
     axios.post('/api/createservice', {date: date, service: service}).then(response => {
       console.log(response)
@@ -36,7 +28,7 @@ class ServiceListContainer extends Component {
 
   render() {
     return (
-      <ServiceList services={this.props.services} delete={this.delete} enroll={this.enroll}/>
+      <ServiceList services={this.props.services} enroll={this.enroll}/>
     )
   }
 }

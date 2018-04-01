@@ -9,7 +9,7 @@ import { syncHistoryWithStore } from "react-router-redux"
 import Template from "./components/template/Template"
 import Home from "./components/pages/Home"
 import Authorization from "./components/pages/Authorization"
-import MyCalendar from "./components/pages/MyCalendar"
+import Appointment from "./components/pages/Appointment"
 import Schedule from "./components/pages/Schedule"
 
 const history = syncHistoryWithStore(hashHistory, store)
@@ -22,7 +22,7 @@ class App extends Component {
         <Router history={history}>
             <Route path="/" component={Template}>
                 <IndexRoute component={Home}/>
-                <Route path="/mycalendar" component={MyCalendar}/>
+                <Route path="/appointment" component={Appointment}/>
                 <Route path="/schedule" component={Schedule}/>
                 <Route path="/authorization" component={Authorization}/>
             </Route>
