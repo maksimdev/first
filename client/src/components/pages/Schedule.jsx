@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import ItemList from '../components/itemlist/ItemList';
+import ItemListContainer from '../components/itemlist/ItemListContainer';
 
 class Schedule extends Component {
   render() {
     return (
       <div>
         <h3>Schedule</h3>
-        <ItemList />
+        <ItemListContainer />
       </div>
     )
   }

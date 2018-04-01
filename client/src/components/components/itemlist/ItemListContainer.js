@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ItemList from './ItemList';
 
-class ItemList extends Component {
+//Available services from server side
+class ItemListContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,7 +11,7 @@ class ItemList extends Component {
     }
   }
   componentDidMount() {
-    this.getData('/api/all');  // /api/all without auth
+    this.getData('/api/all');
   }
 
   getData(url) {
@@ -24,7 +26,7 @@ class ItemList extends Component {
     })
     .then((items) => this.setState({ items: items }))
     .catch(() => this.setState({ hasErrored: true }));
-}
+  }
 
     render() {
         if (this.state.hasErrored) { //error with access or route!
@@ -33,14 +35,13 @@ class ItemList extends Component {
         if (this.state.isLoading) {
             return <p>Loading…</p>;
         }
+        if (this.state.items.length === 0) {
+            return <p>No current records!</p>;
+        }
         return (
-            <ul>
-              {this.state.items.map(
-                (item) => (<li key={item.id}>{item.label}</li>)
-              )}
-            </ul>
+          <ItemList items={this.state.items} />
         );
     }
 }
 
-export default ItemList;
+export default ItemListContainer;

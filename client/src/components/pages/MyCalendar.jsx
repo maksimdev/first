@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import ServiceListContainer from '../components/servicelist/ServiceListContainer';
 
-class Ask extends Component {
+class MyCalendar extends Component {
   render() {
     return (
       <div>
-        <h3>Ask</h3>
-        <p>GET DATA FROM SERVICE API</p>
+        <h3>MyCalendar</h3>
+        <p>Current records.</p>
         <ServiceListContainer />
       </div>
     )
   }
 }
 
-export default Ask
+export default MyCalendar

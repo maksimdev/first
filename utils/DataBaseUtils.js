@@ -10,20 +10,18 @@ function setUpConnection() {
 }
 
 //SERVICE MANAGER
-function createService(data) {
-  let user = date.session.user
-  let serviceData = data.body
-  let service = {
-    date: serviceData.date,
-    time: serviceData.time,
-    service: serviceData.service,
-    user: serviceData.user //CURRENT!
+function createService(req) {
+  let record = {
+    date: new Date,
+    service: 'newService'+new Date,
+    user: req.session.passport.user
   }
-  let newservice = new ServiceModel.service(service)
+  let newservice = new ServiceModel.Service(record)
   return newservice.save()
 }
-function getUsersSchedule(serviceData) {
-  return ServiceModel.Service.find({username: username})
+
+function getUsersSchedule(user) {
+  return ServiceModel.Service.find({user: user}, {date: 1, service: 1, _id: 0})
 }
 
 //USER MANAGER
@@ -44,3 +42,5 @@ module.exports.setUpConnection = setUpConnection;
 module.exports.createUser = createUser;
 module.exports.getUser = getUser;
 module.exports.UserModel = UserModel;
+module.exports.getUsersSchedule = getUsersSchedule;
+module.exports.createService = createService;

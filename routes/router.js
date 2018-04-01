@@ -10,28 +10,37 @@ router.get('/', function (req, res, next) {
 });
 
 //SERVICES MANAGER
-router.get('/api/services', authenticationMiddleware(), (req, res) => {
+router.get('/api/myservices', authenticationMiddleware(), (req, res) => {
+  console.log('GETTING MY SERVICES')
   console.log(req.session)
+  //FROM DB, CURRENT USER
   res.send([
-      {id:1, name:'Service one', description:'One - popular service.', price:'10.00'},
-      {id:2, name:'Service two', description:'Two - popular service.', price:'20.00'},
-      {id:3, name:'Service three', description:'Three - popular service.', price:'30.00'}
+      {id:1, name:'Eating cookie', description:'1 hour of eating cookies', time:'10:00', price:'10.00'},
+      {id:2, name:'Watching at cookie', description:'1 hour of watching at cookies', time:'12:00', price:'20.00'},
+      {id:3, name:'Thouching at cookie', description:'1 hour of touching at cookies', time:'14:00', price:'30.00'}
     ]
   );
 });
 
-//ALL SERVICES WITHOUT ACCESS
+//My SERVICES
 router.get('/api/all', authenticationMiddleware(), (req, res) => {
-  console.log(req.session)
-  res.send([
-    {id: 1,label: 'List item 1'},
-    {id: 2,label: 'List item 2'},
-    {id: 3,label: 'List item 3'},
-    {id: 4,label: 'List item 4'},
-    ]
-  );
+  console.log('API ALL')
+  //GET FROM DATABASE
+
+    //EXAMPLE FOR CREATE SERVICE!
+    // db.createService(req).then(function(result){
+  	// 	console.log(result)
+  	// })
+  	// .catch(function(err){
+  	// 	console.log(result);
+  	// })
+
+    db.getUsersSchedule(req.session.passport.user).then(function(result){
+      console.log(result)
+      res.send(result)
+    }).catch(() => console.log('error'))
 });
-//GET USERS SERVICES
+//CREATE SERVICE
 router.get('/api/createservice', authenticationMiddleware(), (req, res) => {
   db.createService(req)
     .then(function(result){

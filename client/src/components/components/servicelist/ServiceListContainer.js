@@ -4,12 +4,12 @@ import store from '../../../Store';
 import ServiceList from './ServiceList';
 //import axios from 'axios';
 
-
+//MY SERVICES!!!
 class ServiceListContainer extends Component {
   componentDidMount() {
     // axios.get('/api/services').then(response => {
     //   store.dispatch({
-    //     type: 'GET_SERVICE_LIST',
+    //     type: 'SET_SERVICE_DATA',
     //     payload: response.data
     //   });
     // });
