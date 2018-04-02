@@ -15,7 +15,8 @@ function createService(req) {
     date: req.body.date,
     service: req.body.service,
     user: req.session.passport.user,
-    timestamp: new Date()
+    timestamp: new Date(),
+    uniq_key: req.body.uniq_key+req.session.passport.user
   }
   let newservice = new ServiceModel.Service(record)
   return newservice.save()

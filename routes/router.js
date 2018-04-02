@@ -11,13 +11,18 @@ router.get('/', function (req, res, next) {
 
 //SERVICES MANAGER
 router.get('/api/all', authenticationMiddleware(), (req, res) => {
-
   res.send([
       {id:1, name:'Eating cookie', description:'1 hour of eating cookies', time:'10:00', price:'10.00'},
       {id:2, name:'Watching at cookie', description:'1 hour of watching at cookies', time:'12:00', price:'20.00'},
       {id:3, name:'Thouching at cookie', description:'1 hour of touching at cookies', time:'14:00', price:'30.00'}
     ]
   );
+});
+router.get('/api/appointment', (req, res) => {
+    res.send([
+      {id:1, service: 'one service', user: ''},
+      {id:2, service: 'two service', user: ''}
+            ])
 });
 
 //My SERVICES

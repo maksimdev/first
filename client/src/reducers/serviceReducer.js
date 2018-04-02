@@ -11,6 +11,10 @@ function serviceReducer (state = initialState, action) {
       return state
   }
 
+  // if ( action.type === 'SET_SERVICE_DATA' ) {
+  //     return action.payload
+  // }
+
   if (action.type === 'ADD_SERVICE') {
     return [
       ...state,
@@ -18,13 +22,12 @@ function serviceReducer (state = initialState, action) {
     ]
   }
 
-  //only for current users service(CHECK USER)
-  if (action.type === 'DELETE_SERVICE') {
-    return [
-      ...state.slice(0, action.payload),
-      ...state.slice(action.payload + 1)
-    ]
-  }
+  // if (action.type === 'DELETE_SERVICE') {
+  //   return [
+  //     ...state.slice(0, action.payload),
+  //     ...state.slice(action.payload + 1)
+  //   ]
+  // }
 
   return state;
 }

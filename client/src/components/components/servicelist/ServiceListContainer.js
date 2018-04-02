@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import store from '../../../Store';
 import ServiceList from './ServiceList';
 import axios from 'axios';
+import { hashHistory } from "react-router";
 
 class ServiceListContainer extends Component {
   componentDidMount() {
-    // axios.get('/api/services').then(response => {
+    // axios.get('/api/appointment').then(response => {
     //   store.dispatch({
     //     type: 'SET_SERVICE_DATA',
     //     payload: response.data
@@ -18,13 +19,15 @@ class ServiceListContainer extends Component {
     });
   }
 
-  enroll(date, service) {
-    axios.post('/api/createservice', {date: date, service: service}).then(response => {
-      console.log(response)
+  enroll(date, service, id) {
+    window.confirm(`Do you want to make an appointment at "${service}:${date.toISOString()}"?`) ?
+    axios.post('/api/createservice', {date: date, service: service, uniq_key: date.toISOString()+service}).then(response => {
+      hashHistory.push('/schedule');
     }).catch(() => {
-      console.log('Error!')
-    });
+      window.alert(`${service}:${date.toISOString()} Already exist!`)
+    }) : null;
   }
+
 
   render() {
     return (
