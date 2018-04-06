@@ -4,7 +4,7 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 100px;
 }
 
 .App-header {
@@ -27,11 +27,8 @@
   to { transform: rotate(360deg); }
 }
 
-#nav > ul > li {
-  display: inline;
-  margin-right: 5px;
-}
-
-#nav > ul > li > a {
-  text-decoration: none;
+.service {
+  background-color: #222629;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
 }

@@ -11,14 +11,14 @@ function setUpConnection() {
 
 //SERVICE MANAGER
 function createService(req) {
-  let record = {
+  var record = {
     date: req.body.date,
     service: req.body.service,
     user: req.session.passport.user,
     timestamp: new Date(),
     uniq_key: req.body.uniq_key+req.session.passport.user
   }
-  let newservice = new ServiceModel.Service(record)
+  var newservice = new ServiceModel.Service(record)
   return newservice.save()
 }
 
@@ -32,11 +32,11 @@ function getUsersSchedule(user) {
 
 //USER MANAGER
 function createUser(userData) {
-  let user = {
+  var user = {
     username: userData.username,
     password: userData.password
   }
-  let newuser = new UserModel.User(user)
+  var newuser = new UserModel.User(user)
   return newuser.save()
 }
 function getUser(username) {

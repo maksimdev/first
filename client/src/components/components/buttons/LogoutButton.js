@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { hashHistory } from "react-router";
 
-class LogoutButton extends Component {
+export default class LogoutButton extends Component {
   constructor(props) {
      super(props);
      this.state = {
@@ -24,5 +24,3 @@ class LogoutButton extends Component {
     )
   }
 }
-
-export default LogoutButton;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ItemList from './ItemList';
 
-class ItemListContainer extends Component {
+export default class ItemListContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -38,7 +38,7 @@ class ItemListContainer extends Component {
 
     render() {
         if (this.state.hasErrored) { //error with access or route!
-            return <p>Access denied, please log in!</p>;
+            return <p>Access denied, please login!</p>;
         }
         if (this.state.isLoading) {
             return <p>Loading…</p>;
@@ -52,5 +52,3 @@ class ItemListContainer extends Component {
         );
     }
 }
-
-export default ItemListContainer;

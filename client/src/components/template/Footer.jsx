@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
-class Footer extends Component {
+export default class Footer extends Component {
   render() {
     return (
-      <h3>Footer</h3>
+      <div id="footer">
+          <ul className="copyright">
+              <li>&copy; Cookie Monster's company.</li><li>Developer Maksim Ashmetev: <a href="https://github.com/maksimdev/first">GITHUB</a></li>
+          </ul>
+      </div>
     )
   }
 }
-
-export default Footer

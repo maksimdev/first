@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './formStyle.css';
 
 //<Form action="login" method="post" buttonText="Log in" />
-class Form extends Component {
+export default class Form extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -78,6 +78,7 @@ class Form extends Component {
                className={`labelForm ${!this.state.passwordValid ? 'labelFormError' : ''}`}
               />
           </div>
+          <br />
           <div>
               <input
                type="submit"
@@ -89,5 +90,3 @@ class Form extends Component {
     )
   }
 }
-
-export default Form;

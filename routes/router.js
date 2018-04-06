@@ -60,15 +60,17 @@ router.post('/register', (req, res) => {
   db.createUser(req.body)
     .then(function(result){
       req.session.username = result.username
-  		res.status(200).send("Created")
+  		//res.status(200).send("Created")
+      res.redirect('/#/login')
   	})
   	.catch(function(err){
-  		res.status(500).send('THIS LOGIN ALREDY EXIST!');
+  		//res.status(500).send('THIS LOGIN ALREDY EXIST!');
+      res.redirect('/#/registration')
   	})
 });
 
-router.post('/login', passport.authenticate('local', { successRedirect: '/',
-                                     failureRedirect: '/login',
+router.post('/login', passport.authenticate('local', { successRedirect: '/#/schedule',
+                                     failureRedirect: '/#/login',
                                      failureFlash: true })
 );
 

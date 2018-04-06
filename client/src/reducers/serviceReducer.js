@@ -1,12 +1,12 @@
 //this data must come from the server and use middleware!
 //
 const initialState = [
-    {id:1, name:'Eating cookie', description:'1 hour of eating cookies', time: new Date(2018, 3, 1, 12), price:'10.00'},
-    {id:2, name:'Watching at cookie', description:'1 hour of watching at cookies', time: new Date(2018, 3, 1, 13), price:'20.00'},
-    {id:3, name:'Thouching at cookie', description:'1 hour of touching at cookies', time: new Date(2018, 3, 1, 14), price:'30.00'}
+    {id:1, name:'Eating cookie', description:'1 hour of eating cookies', time: new Date(2018, 3, 20, 10), price:'10.00'},
+    {id:2, name:'Watching at cookie', description:'2 hour of watching at cookies', time: new Date(2018, 3, 25, 15), price:'20.00'},
+    {id:3, name:'Thouching at cookie', description:'3 hour of touching at cookies', time: new Date(2018, 3, 30, 18), price:'30.00'}
   ]
 
-function serviceReducer (state = initialState, action) {
+export default function serviceReducer (state = initialState, action) {
   if ( action.type === 'GET_SERVICE_DATA' ) {
       return state
   }
@@ -31,4 +31,3 @@ function serviceReducer (state = initialState, action) {
 
   return state;
 }
-export default serviceReducer

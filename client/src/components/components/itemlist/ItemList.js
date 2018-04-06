@@ -9,7 +9,7 @@ export default function(props) {
           <li key={id} className="service">
             <span>Date: {item.date}</span><br />
             <span>Title: {item.service}</span><br />
-            <span>Date of registration: {item.timestamp}</span>
+            <span>Date of registration: {item.timestamp}</span><br />
             <button onClick={() => props.undo(item._id, id)}>Undo recording</button>
           </li>
       )}

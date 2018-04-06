@@ -14,8 +14,8 @@ class ServiceListContainer extends Component {
     //   });
     // });
     store.dispatch({
-        type: 'GET_SERVICE_DATA',
-        payload: ''
+      type: 'GET_SERVICE_DATA',
+      payload: ''
     });
   }
 
@@ -23,8 +23,13 @@ class ServiceListContainer extends Component {
     window.confirm(`Do you want to make an appointment at "${service}:${date.toISOString()}"?`) ?
     axios.post('/api/createservice', {date: date, service: service, uniq_key: date.toISOString()+service}).then(response => {
       hashHistory.push('/schedule');
-    }).catch(() => {
-      window.alert(`${service}:${date.toISOString()} Already exist!`)
+    }).catch((err) => {
+      if(err.message === "Request failed with status code 500") {
+        window.alert(`${service}: Already exist!`)
+      }
+      if(err.message === "Request failed with status code 401") {
+        window.alert(`Please login!`)
+      }
     }) : null;
   }
 

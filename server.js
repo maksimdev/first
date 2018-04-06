@@ -24,12 +24,13 @@ app.use(passport.session())
 passport.serializeUser(function(user, done) {
   //console.log('serializeUser');
   //console.log(user);
+
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  console.log('deserializeUser');
-  console.log(id);
+  // console.log('deserializeUser');
+  // console.log(id);
   db.UserModel.User.findById(id, function(err, user) {
     done(err, user);
   });

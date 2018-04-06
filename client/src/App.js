@@ -8,13 +8,16 @@ import { syncHistoryWithStore } from "react-router-redux"
 
 import Template from "./components/template/Template"
 import Home from "./components/pages/Home"
-import Authorization from "./components/pages/Authorization"
+import Registration from "./components/pages/Registration"
 import Appointment from "./components/pages/Appointment"
 import Schedule from "./components/pages/Schedule"
+import Login from "./components/pages/Login"
+
+import "./assets/css/main.css"
 
 const history = syncHistoryWithStore(hashHistory, store)
 
-class App extends Component {
+export default class App extends Component {
 
   render() {
     return (
@@ -24,12 +27,11 @@ class App extends Component {
                 <IndexRoute component={Home}/>
                 <Route path="/appointment" component={Appointment}/>
                 <Route path="/schedule" component={Schedule}/>
-                <Route path="/authorization" component={Authorization}/>
+                <Route path="/Login" component={Login}/>
+                <Route path="/registration" component={Registration}/>
             </Route>
         </Router>
     </Provider>
     );
   }
 }
-
-export default App;

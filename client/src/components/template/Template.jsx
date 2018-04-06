@@ -11,7 +11,9 @@ class App extends Component {
         <div>
           <Header />
             <Main>
-              {this.props.children}
+              <section>
+                {this.props.children}
+              </section>
             </Main>
           <Footer />
         </div>
