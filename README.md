@@ -1,7 +1,5 @@
 # Project with create-react-app
 
-# You can just look this project on the Internet http://91.122.34.210.
-
 Contain:
 1) Server-side NodeJS.
 2) Frontend ReactJS.
